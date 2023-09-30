@@ -28,12 +28,15 @@ fun PanucciNavHost(navController: NavHostController) {
         )
         checkoutScreen(
             onPopBackStack = {
+                //if you change position the call, all time you enter in this flow where you maked you order
+                //the snackbar is presentation because the message don't removed after read
+                //despite the order had send the message is show when you navigate on app
+                navController.navigateUp()
                 //using navCntroller to set savedStateHandle and add message
                 //this message referred to send order success
                 navController.currentBackStackEntry
                     ?.savedStateHandle
                     ?.set("order_done","Pedido feito com sucesso")
-                navController.navigateUp()
             },
         )
     }
