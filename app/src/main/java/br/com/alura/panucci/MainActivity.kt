@@ -37,6 +37,13 @@ class MainActivity : ComponentActivity() {
                 }
             }
             val backStackEntryState by navController.currentBackStackEntryAsState()
+
+            val orderDoneMessage = backStackEntryState
+                ?.savedStateHandle
+                ?.getStateFlow<String?>("order_done", null)
+                ?.collectAsState()
+            Log.i("MAINACTIVITY", "onCreate: order received $orderDoneMessage")
+
             val currentDestination = backStackEntryState?.destination
             PanucciTheme {
                 Surface(
