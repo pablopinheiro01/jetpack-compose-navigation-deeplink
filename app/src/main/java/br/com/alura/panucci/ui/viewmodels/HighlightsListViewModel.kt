@@ -21,13 +21,13 @@ class HighlightsListViewModel(
     init {
         viewModelScope.launch {
             dao.products
-                .map { p ->
-                    p.map {
-                        it.copy(
-                            id = UUID.randomUUID().toString()
-                        )
-                    }
-                }
+//                .map { p ->
+//                    p.map {
+//                        it.copy(
+//                            id = UUID.randomUUID().toString()
+//                        )
+//                    }
+//                }
                 .collect { products ->
                     _uiState.update {
                         it.copy(products = products)
