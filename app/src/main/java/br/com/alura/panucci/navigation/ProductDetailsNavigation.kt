@@ -11,7 +11,7 @@ import androidx.navigation.navDeepLink
 import br.com.alura.panucci.ui.screens.ProductDetailsScreen
 import br.com.alura.panucci.ui.viewmodels.ProductDetailsViewModel
 
-private const val productDetailsRoute = "productDetails"
+const val productDetailsRoute = "productDetails"
 const val productIdArgument = "productId"
 const val promoCodeArgument = "promoCode"
 

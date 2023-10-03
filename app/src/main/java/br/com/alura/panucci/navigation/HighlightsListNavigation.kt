@@ -11,7 +11,7 @@ import br.com.alura.panucci.model.Product
 import br.com.alura.panucci.ui.screens.HighlightsListScreen
 import br.com.alura.panucci.ui.viewmodels.HighlightsListViewModel
 
-internal const val highlightsListRoute = "highlight"
+const val highlightsListRoute = "highlight"
 
 fun NavGraphBuilder.highlightsListScreen(
     onNavigateToCheckout: () -> Unit,
