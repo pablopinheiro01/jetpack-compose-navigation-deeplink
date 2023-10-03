@@ -12,6 +12,8 @@ import androidx.compose.material.icons.filled.PointOfSale
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -43,7 +45,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun PanucciApp(navController:NavHostController = rememberNavController()) {
+fun PanucciApp(navController: NavHostController = rememberNavController()) {
 
     LaunchedEffect(Unit) {
         navController.addOnDestinationChangedListener { _, _, _ ->
@@ -129,7 +131,9 @@ fun PanucciApp(
     Scaffold(
         snackbarHost = {
             SnackbarHost(snackbarHostState) { data ->
-                Snackbar(modifier = Modifier.padding(8.dp)) {
+                Snackbar(modifier = Modifier
+                    .padding(8.dp)
+                    .semantics { contentDescription = "PanucciSnackbar" }) {
                     Text(text = "${data.visuals.message}")
                 }
             }
@@ -140,6 +144,7 @@ fun PanucciApp(
                     title = {
                         Text(text = "Ristorante Panucci")
                     },
+                    modifier = Modifier.semantics { contentDescription = "PanucciTopAppBar" }
                 )
             }
         },
@@ -149,13 +154,17 @@ fun PanucciApp(
                     item = bottomAppBarItemSelected,
                     items = bottomAppBarItems,
                     onItemChange = onBottomAppBarItemSelectedChange,
+                    modifier = Modifier.semantics {
+                        contentDescription = "PanucciBottomAppBar"
+                    }
                 )
             }
         },
         floatingActionButton = {
             if (isShowFab) {
                 FloatingActionButton(
-                    onClick = onFabClick
+                    onClick = onFabClick,
+                    modifier = Modifier.semantics { contentDescription = "Floating Action Button" }
                 ) {
                     Icon(
                         Icons.Filled.PointOfSale,
